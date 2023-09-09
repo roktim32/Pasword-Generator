@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState, useRef } from 'react'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [length, setLength] = useState(8)
@@ -29,6 +31,7 @@ function App() {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 100)
     window.navigator.clipboard.writeText(password)
+    toast.success("Copied📋")
   }, [password])
 
   useEffect(() => {
@@ -93,6 +96,17 @@ function App() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" />
     </>
   )
 }
